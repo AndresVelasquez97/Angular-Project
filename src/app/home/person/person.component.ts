@@ -12,7 +12,7 @@ import {MatSort} from '@angular/material/sort';
     styleUrls: ['./person.component.scss']
 })
 export class PersonComponent implements AfterViewInit {
-    displayedColumns: string[] = ['identification', 'first_name', 'last_name', 'email', 'phone'];
+    displayedColumns: string[] = ['identification', 'first_name', 'last_name', 'email', 'phone', 'birth_date', 'address'];
     data: string[] = [];
     resultsLength = 0;
     isLoadingResults = true;
