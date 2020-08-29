@@ -1,0 +1,100 @@
+.mat-paginator {
+  font-size: 14px;
+}
+
+.card-header-image {
+  background: url("../../../assets/images/donante.png");
+  background-size: cover;
+}
+
+.mat-card-title, .mat-card-subtitle {
+  margin-left: -8px;
+}
+
+::ng-deep .mat-sort-header-arrow {
+  margin: 0 0 0 10px !important;
+  color: #fff;
+
+  .mat-sort-header-stem {
+    width: 0.2rem !important;
+  }
+}
+
+.mat-sort-header {
+  cursor: pointer;
+}
+
+.mat-button-disabled {
+  color: #000 !important;
+}
+
+.loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-card-content, .mat-card-content-table {
+  margin-bottom: 0;
+}
+
+.mat-card-content-table {
+  flex: 1;
+  overflow: auto;
+  border-bottom: 2px solid #3F51B5;
+}
+
+.mat-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.mat-card-content::-webkit-scrollbar {
+  display: none;
+}
+
+.mat-header-row {
+  background: #3F51B5;
+  border-radius: 4px;
+}
+
+.mat-header-cell {
+  color: #fff;
+  font-size: 14px;
+}
+
+tr {
+  display: flex;
+
+  td {
+    width: 100%;
+    padding-top: 12px;
+    text-align: center;
+  }
+}
+
+.mat-row:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.mat-row:nth-child(odd) {
+  background-color: #fff;
+}
+
+mat-form-field {
+  width: 250px;
+
+  button {
+    top: -0.1rem;
+    right: -0.2rem;
+  }
+}

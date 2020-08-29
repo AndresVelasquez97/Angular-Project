@@ -1,0 +1,59 @@
+<div class="loading-shade"
+     *ngIf="isLoadingResults || isRateLimitReached">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    <div *ngIf="isRateLimitReached">
+        !Tenemos un problema, vuelve a cargar la pagina¡
+    </div>
+</div>
+<mat-card>
+    <mat-card-header>
+        <div mat-card-avatar class="card-header-image"></div>
+        <mat-card-title>Donors</mat-card-title>
+        <mat-card-subtitle>List of donors</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-form-field appearance="outline">
+            <mat-label>Búsqueda rapida</mat-label>
+            <input matInput placeholder="Palabras de búsqueda" autocomplete="off" [formControl]="inputSearch">
+            <button mat-icon-button matSuffix (click)="deleteSearch()" *ngIf="searchValue != ''">
+                <mat-icon matSuffix>clear</mat-icon>
+            </button>
+            <button mat-icon-button matSuffix disabled *ngIf="searchValue == ''">
+                <mat-icon matSuffix>search</mat-icon>
+            </button>
+        </mat-form-field>
+    </mat-card-content>
+    <mat-card-content class="mat-card-content-table">
+        <mat-table [dataSource]="data" matSort matSortActive="first_name" matSortDisableClear matSortDirection="asc">
+            <ng-container matColumnDef="identification">
+                <mat-header-cell *matHeaderCellDef> Identification</mat-header-cell>
+                <mat-cell *matCellDef="let person"> {{person.identification}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="first_name">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Name</mat-header-cell>
+                <mat-cell *matCellDef="let person"> {{person.first_name}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="last_name">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Lastname</mat-header-cell>
+                <mat-cell *matCellDef="let person"> {{person.last_name}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="email">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Email</mat-header-cell>
+                <mat-cell *matCellDef="let person"> {{person.email}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="phone">
+                <mat-header-cell *matHeaderCellDef> Phone</mat-header-cell>
+                <mat-cell *matCellDef="let person"> {{person.phone}} </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No hay datos que coincidan con la búsqueda solicitada</td>
+            </tr>
+        </mat-table>
+    </mat-card-content>
+    <mat-card-footer>
+        <mat-paginator [pageSize]="20" [length]="resultsLength"></mat-paginator>
+    </mat-card-footer>
+</mat-card>
+
