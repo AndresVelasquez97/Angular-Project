@@ -1,5 +1,5 @@
 <div class="loading-shade"
-     *ngIf="isLoadingResults || isRateLimitReached">
+     *ngIf="(isLoadingResults || isRateLimitReached) && !searchValue">
     <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
     <div *ngIf="isRateLimitReached">
         !Tenemos un problema, vuelve a cargar la pagina¡
@@ -15,10 +15,10 @@
         <mat-form-field appearance="outline">
             <mat-label>Búsqueda rapida</mat-label>
             <input matInput placeholder="Palabras de búsqueda" autocomplete="off" [formControl]="inputSearch">
-            <button mat-icon-button matSuffix (click)="deleteSearch()" *ngIf="searchValue != ''">
+            <button mat-icon-button matSuffix (click)="deleteSearch()" *ngIf="searchValue">
                 <mat-icon matSuffix>clear</mat-icon>
             </button>
-            <button mat-icon-button matSuffix disabled *ngIf="searchValue == ''">
+            <button mat-icon-button matSuffix disabled *ngIf="!searchValue">
                 <mat-icon matSuffix>search</mat-icon>
             </button>
         </mat-form-field>

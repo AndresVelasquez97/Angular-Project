@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {PersonService} from './person.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {merge, Observable} from 'rxjs';
-import {catchError, debounceTime, map, startWith, switchMap, tap} from 'rxjs/operators';
+import {catchError, map, startWith, switchMap, tap} from 'rxjs/operators';
 import {FormControl} from '@angular/forms';
 import {MatSort} from '@angular/material/sort';
 
@@ -25,7 +25,6 @@ export class PersonComponent implements AfterViewInit {
     @ViewChild(MatSort) sort: MatSort;
 
     deleteSearch(): void {
-        this.isLoadingResults = true;
         this.inputSearch.setValue('');
     }
 
@@ -35,7 +34,6 @@ export class PersonComponent implements AfterViewInit {
     ngAfterViewInit(): void {
         this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
         this.search = this.inputSearch.valueChanges.pipe(
-            debounceTime(500),
             tap(t => this.searchValue = t)
         );
         this.search.subscribe(() => this.paginator.pageIndex = 0);
