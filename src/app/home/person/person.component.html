@@ -64,6 +64,9 @@
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="100">No hay datos que coincidan con "{{searchValue}}"</td>
+            </tr>
         </table>
     </mat-card-content>
     <mat-card-footer>
